@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1090.4,1033.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1037.6,1300</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SignOffFromEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -68,7 +68,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="542.4,968.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap:VirtualizedContainerService.HintSize="542.4,1235.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="romanianLanguageBoolean" />
     </Sequence.Variables>
@@ -77,19 +77,43 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="600" DelayMS="600" DisplayName="Click on the profile picture" sap:VirtualizedContainerService.HintSize="499.2,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-      <ui:Click.CursorPosition>
-        <ui:CursorPosition Position="Center">
-          <ui:CursorPosition.OffsetX>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:CursorPosition.OffsetX>
-          <ui:CursorPosition.OffsetY>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:CursorPosition.OffsetY>
-        </ui:CursorPosition>
-      </ui:Click.CursorPosition>
-      <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bdf69869-296f-4815-b2f7-9596480a8ea3" InformativeScreenshot="6a8d0be1e523f283e0478c6d9c2901e9" Selector="&lt;html app='chrome.exe' title='*- cvs.for.hr.department@gmail.com*' /&gt;&lt;webctrl parentid='gb' src='https://lh3.googleusercontent.com/ogw/AOh-ky3rHrGII_KkrBqLw9DpCr*' tag='IMG' /&gt;">
+    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear (profile picture)" sap:VirtualizedContainerService.HintSize="499.2,373.6" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1">
+      <ui:OnUiElementAppear.Body>
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,196.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="600" DelayMS="600" DisplayName="Click on the profile picture" sap:VirtualizedContainerService.HintSize="356.8,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bdf69869-296f-4815-b2f7-9596480a8ea3" InformativeScreenshot="6a8d0be1e523f283e0478c6d9c2901e9" Selector="&lt;html app='chrome.exe' title='*- cvs.for.hr.department@gmail.com*' /&gt;&lt;webctrl parentid='gb' src='https://lh3.googleusercontent.com/ogw*' tag='IMG' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+        </Sequence>
+      </ui:OnUiElementAppear.Body>
+      <ui:OnUiElementAppear.RepeatForever>
+        <Literal x:TypeArguments="x:Boolean" />
+      </ui:OnUiElementAppear.RepeatForever>
+      <ui:OnUiElementAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a565bed6-579f-44dd-841a-2fa35cb591b1" InformativeScreenshot="54641d0cb71fdefa50017c07a1b668ec" Selector="&lt;html app='chrome.exe' title='*- cvs.for.hr.department@gmail.com*' /&gt;&lt;webctrl parentid='gb' src='https://lh3.googleusercontent.com/ogw*' tag='IMG' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -97,8 +121,8 @@
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
-      </ui:Click.Target>
-    </ui:Click>
+      </ui:OnUiElementAppear.Target>
+    </ui:OnUiElementAppear>
     <ui:UiElementExists DisplayName="Element Exists (Romanian Sign Out Button)" Exists="[romanianLanguageBoolean]" sap:VirtualizedContainerService.HintSize="499.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4287b3a5-d011-4bd2-b131-b56cf2daee72" InformativeScreenshot="f84f6ed00baaba3e37766d4ebccb3bbf" Selector="&lt;html app='chrome.exe' title='*- cvs.for.hr.department@gmail.com*' /&gt;&lt;webctrl aria-role='presentation' name='account' tag='IFRAME' /&gt;&lt;webctrl aaname='Deconectează-te' class='SedFmc' tag='DIV' /&gt;">

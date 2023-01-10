@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1090.4,1554.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1037.6,1770.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SignInRomanian_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -63,7 +63,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SignInRomanian" sap:VirtualizedContainerService.HintSize="520.8,1489.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SignInRomanian" sap:VirtualizedContainerService.HintSize="520.8,2022.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="settingsIconBoolean" />
     </Sequence.Variables>
@@ -84,7 +84,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf155dee-407d-4194-8ef8-7b469948c51c" InformativeScreenshot="2dc1955c85db31aebff4ff196ccd25a7" Selector="&lt;html app='chrome.exe' title='Gmail: e-mail securizat, privat și gratuit | Google Workspace' /&gt;&lt;webctrl aaname='Conectează-te' tag='A' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf155dee-407d-4194-8ef8-7b469948c51c" InformativeScreenshot="2dc1955c85db31aebff4ff196ccd25a7" Selector="&lt;html app='chrome.exe' title='Gmail*' /&gt;&lt;webctrl aaname='Conectează-te' tag='A' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -94,9 +94,33 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="600" DisplayName="Type Into Email Address Input Field the Email" sap:VirtualizedContainerService.HintSize="477.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[emailAddress]">
-      <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8872a77e-8699-41c4-b76c-c76b3679ce3e" InformativeScreenshot="8c13a903a48368e6db5ecdb89febf384" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl id='identifierId' tag='INPUT' /&gt;">
+    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear (email address input field)" sap:VirtualizedContainerService.HintSize="477.6,401.6" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1">
+      <ui:OnUiElementAppear.Body>
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,224.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="600" DisplayName="Type Into Email Address Input Field the Email" sap:VirtualizedContainerService.HintSize="356.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[emailAddress]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8872a77e-8699-41c4-b76c-c76b3679ce3e" InformativeScreenshot="8c13a903a48368e6db5ecdb89febf384" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl id='identifierId' tag='INPUT' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+        </Sequence>
+      </ui:OnUiElementAppear.Body>
+      <ui:OnUiElementAppear.RepeatForever>
+        <Literal x:TypeArguments="x:Boolean" />
+      </ui:OnUiElementAppear.RepeatForever>
+      <ui:OnUiElementAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ccd78d24-0562-498d-906f-203d3dc9f5e8" InformativeScreenshot="2839617c238ca20030dbc527cd96bd8e" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl id='identifierId' tag='INPUT' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -104,8 +128,8 @@
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
-      </ui:TypeInto.Target>
-    </ui:TypeInto>
+      </ui:OnUiElementAppear.Target>
+    </ui:OnUiElementAppear>
     <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Inainte' to go to the next step" sap:VirtualizedContainerService.HintSize="477.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
@@ -128,9 +152,33 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="800" DisplayName="Type Into Password Input Field the Password" sap:VirtualizedContainerService.HintSize="477.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[password]">
-      <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="60866873-a51d-4cef-a8ea-c2f4d60d559e" InformativeScreenshot="e9023013cbd1f15f504d81c8f74a8617" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl tag='INPUT' type='password' /&gt;">
+    <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear (password input field)" sap:VirtualizedContainerService.HintSize="477.6,401.6" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2">
+      <ui:OnUiElementAppear.Body>
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,224.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="800" DisplayName="Type Into Password Input Field the Password" sap:VirtualizedContainerService.HintSize="356.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[password]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="60866873-a51d-4cef-a8ea-c2f4d60d559e" InformativeScreenshot="e9023013cbd1f15f504d81c8f74a8617" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl tag='INPUT' type='password' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+        </Sequence>
+      </ui:OnUiElementAppear.Body>
+      <ui:OnUiElementAppear.RepeatForever>
+        <Literal x:TypeArguments="x:Boolean" />
+      </ui:OnUiElementAppear.RepeatForever>
+      <ui:OnUiElementAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f41e1fbf-fed2-498e-8e24-3a5adceecb8a" InformativeScreenshot="d9f341c95a6887a958f19de5d3a1b1e7" Selector="&lt;html app='chrome.exe' title='Gmail' /&gt;&lt;webctrl tag='INPUT' type='password' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -138,8 +186,8 @@
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
-      </ui:TypeInto.Target>
-    </ui:TypeInto>
+      </ui:OnUiElementAppear.Target>
+    </ui:OnUiElementAppear>
     <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="600" DisplayName="Click 'Inainte' to go to the next step" sap:VirtualizedContainerService.HintSize="477.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">

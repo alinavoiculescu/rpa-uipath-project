@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1090.4,1115.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>499.20000000000005,1115.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadCVs_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -88,9 +88,15 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadEmailAndPassword.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="466.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DownloadCVs\ReadEmailAndPasswordFromFile\ReadEmailAndPassword.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="filePath">[configFilePath]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="password">[password]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="emailAddress">[emailAddress]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="password">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="password" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="emailAddress">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailAddress" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="configFilePath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="configFilePath" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser (Go to Gmail)" sap:VirtualizedContainerService.HintSize="466.4,807.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="https://www.google.com/gmail/about/">

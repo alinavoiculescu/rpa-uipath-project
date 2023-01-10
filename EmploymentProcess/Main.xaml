@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1090.4,610.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1037.6,424" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
       <x:String>System.Activities</x:String>
@@ -72,16 +72,12 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="configFilePath">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">config/config.txt</Literal>
+          <Literal x:TypeArguments="x:String">config/config.json</Literal>
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="x:String" Name="emailAddress" />
       <Variable x:TypeArguments="x:String" Name="password" />
-      <Variable x:TypeArguments="x:String" Name="cvsFolderPath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">./CVs</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="./CVs" Name="cvsFolderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -90,18 +86,10 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download CVs" sap:VirtualizedContainerService.HintSize="356.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DownloadCVs\DownloadCVs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="x:String" x:Key="configFilePath">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="configFilePath" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="emailAddress">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailAddress" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="password">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="password" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="cvsFolderPath">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="cvsFolderPath" />
-        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="configFilePath">[configFilePath]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="emailAddress">[emailAddress]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="password">[password]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="cvsFolderPath">[cvsFolderPath]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
