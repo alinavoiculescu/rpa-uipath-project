@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ScanPDFs" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ScanPDFs_1"
+<Activity mc:Ignorable="sap sap2010" x:Class="ScanImagePDF" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ScanImagePDF_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
@@ -49,7 +49,7 @@
             <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
         </sco:Collection>
     </TextExpression.ReferencesForImplementation>
-    <Sequence DisplayName="ScanPDFs" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence DisplayName="ScanImagePDF" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
