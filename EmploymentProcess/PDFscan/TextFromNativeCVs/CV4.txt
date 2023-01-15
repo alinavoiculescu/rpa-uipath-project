@@ -1,0 +1,31 @@
+MY CV
+
+ABOUT ME
+
+First Name: Gupta
+
+Last Name: Patel
+
+E-mail: guptapatelly
+
+MY EDUCATION
+
+Politehnica University of Bucharest
+
+Faculty of Robotics and UFO.
+
+2014 – 2018
+
+Technical Highschool of Mumbai
+
+Robotics and Automation Specialization
+
+2011 – 2014
+
+MY JOB
+
+ITProGaming Corporation
+
+Junior Programming Engineer – UFO architecture in games.
+
+2018 – present
