@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="PDFsScan" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="724,1679" sap2010:WorkflowViewState.IdRef="PDFsScan_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="PDFsScan" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="724,2068" sap2010:WorkflowViewState.IdRef="PDFsScan_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
       <x:String>System.Activities</x:String>
@@ -79,7 +79,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PDFsScan" sap:VirtualizedContainerService.HintSize="734,1614" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PDFsScan" sap:VirtualizedContainerService.HintSize="734,2003" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="pdfNames" />
       <Variable x:TypeArguments="x:String" Name="extractedText" />
@@ -98,13 +98,13 @@
         <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles("C:\Users\Apelia\Desktop\rpa-uipath-project\EmploymentProcess\CVs")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="672,1246" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[pdfNames]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="672,1635" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[pdfNames]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentPDF" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="636,1119" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="636,1508" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="currentPDFname" />
             </Sequence.Variables>
@@ -122,32 +122,35 @@
               </Assign.Value>
             </Assign>
             <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[currentPDF]" sap:VirtualizedContainerService.HintSize="574,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[extractedText]" />
-            <If Condition="[extractedText = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="574,785" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[extractedText = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="574,1174" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="441,359" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,94" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[currentPDFname + &quot; is Scanned type.&quot;]" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDFscan\ScannedPDF\ScanImagePDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="PDFscan\ScannedPDF\ScanImagePDF.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="scannedPathIn">[currentPDF]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="496,502" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="496,636" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="TextFilePath" />
                     <Variable x:TypeArguments="x:Int32" Name="currentNo" />
-                    <Variable x:TypeArguments="x:Int32" Name="currentNoRecieved">
-                      <Variable.Default>
-                        <Literal x:TypeArguments="x:Int32" Value="1" />
-                      </Variable.Default>
-                    </Variable>
+                    <Variable x:TypeArguments="x:Int32" Default="1" Name="currentNoRecieved" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[currentPDFname + &quot; is Native.&quot;]" />
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDFscan\CreateTextFiles.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="PDFscan\CreateTextFiles.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="FileName">[currentPDFname]</InArgument>
@@ -162,20 +165,12 @@
                       <InArgument x:TypeArguments="x:Int32">[currentNoRecieved]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDFscan\NativePDF\ScanNativePDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PDFscan\NativePDF\ScanNativePDF.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDFscan\NativePDF\ScanNativePDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="PDFscan\NativePDF\ScanNativePDF.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="pdfName">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="currentPDF" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="TextFilePathIn">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TextFilePath" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="currentNoIn">
-                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="currentNo" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="x:Int32" x:Key="currentNoOut">
-                        <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="currentNoRecieved" />
-                      </InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="pdfName">[currentPDF]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TextFilePathIn">[TextFilePath]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="currentNoIn">[currentNo]</InArgument>
+                      <InOutArgument x:TypeArguments="x:Int32" x:Key="currentNoOut">[currentNoRecieved]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Sequence>

@@ -2,15 +2,11 @@ MY CV
 
 ABOUT ME
 
-First Name: Gupta
-
-Last Name: Patel
+Name: Gupta Patel
 
 E-mail: guptapatelly
 
-MY EDUCATION
-
-Politehnica University of Bucharest
+MY EDUCATION: Politehnica University of Bucharest
 
 Faculty of Robotics and UFO.
 
@@ -22,7 +18,7 @@ Robotics and Automation Specialization
 
 2011 – 2014
 
-MY JOB
+MY JOB:
 
 ITProGaming Corporation
 
