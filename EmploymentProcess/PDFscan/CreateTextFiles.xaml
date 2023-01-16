@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>749,1189</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>749,1281</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateTextFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -61,7 +61,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateTextFiles" sap:VirtualizedContainerService.HintSize="498,1124" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateTextFiles" sap:VirtualizedContainerService.HintSize="498,1216" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="cvTextFilesPath" />
       <Variable x:TypeArguments="x:String" Name="txtFilePath" />
@@ -103,7 +103,13 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:CreateFile ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create File" sap:VirtualizedContainerService.HintSize="436,135" sap2010:WorkflowViewState.IdRef="CreateFile_2" Name="[FileName+&quot;.txt&quot;]" Path="[cvTextFilesPath]" />
+    <ui:CreateFile ContinueOnError="{x:Null}" Output="{x:Null}" sap2010:Annotation.AnnotationText="This Sequence creates the txt files that corespond to the downloaded CV's. The location of the txt files is in the ScannedPDF\TextFromNativeCVs. It also sends out the path of the current CV.txt file, so it could be analised in ScanNativePDF.xaml workflow" DisplayName="Create File" sap:VirtualizedContainerService.HintSize="436,227" sap2010:WorkflowViewState.IdRef="CreateFile_2" Name="[FileName+&quot;.txt&quot;]" Path="[cvTextFilesPath]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CreateFile>
     <Assign sap:VirtualizedContainerService.HintSize="436,83" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[TextFilePathOut]</OutArgument>

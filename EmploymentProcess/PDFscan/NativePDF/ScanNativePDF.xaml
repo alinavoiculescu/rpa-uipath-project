@@ -149,7 +149,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:Matches sap2010:Annotation.AnnotationText="De aici am inceput sa extrag datele cu ajutorul expresiilor regex, ca mai apoi sa le adaug in tabel excel. Adaugarea in tabelul excel s-ar fi facut rand cu rand, in functie de CurrentNoIn, pentru a nu rescrie acelasi rand iar si iar si iar&#xA;https://www.youtube.com/watch?v=cDIpYlFdPgQ&#xA;" BuilderPattern="(?&lt;=Name: )\w+" DisplayName="regexName" sap:VirtualizedContainerService.HintSize="532,257" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[ExtractedText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=Name: )\\w+&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=Name: )\w+" RegexOption="IgnoreCase, Compiled" Result="[cvName]">
+    <ui:Matches sap2010:Annotation.AnnotationText="De aici am inceput sa extrag datele cu ajutorul expresiilor regex, ca mai apoi sa le adaug in tabel excel. Adaugarea in tabelul excel s-ar fi facut rand cu rand, in functie de CurrentNoIn, pentru a nu rescrie acelasi rand iar si iar si iar&#xA;https://www.youtube.com/watch?v=cDIpYlFdPgQ&#xA;" BuilderPattern="(?&lt;=Name: ).*" DisplayName="regexName" sap:VirtualizedContainerService.HintSize="532,257" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[ExtractedText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=Name: ).*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=Name: ).*" RegexOption="IgnoreCase, Compiled" Result="[cvName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -178,29 +178,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:Matches>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,53" sap2010:WorkflowViewState.IdRef="CommentOut_11">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Sequence_13">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[cvName(0)]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:MessageBox>
-        </Sequence>
-      </ui:CommentOut.Body>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,86" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[cvName(0)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
+    </ui:MessageBox>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,53" sap2010:WorkflowViewState.IdRef="CommentOut_12">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,197" sap2010:WorkflowViewState.IdRef="Sequence_14">
