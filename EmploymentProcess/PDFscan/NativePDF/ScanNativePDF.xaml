@@ -16,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>749,4403</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>800,4403</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ScanNativePDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="62">
@@ -128,14 +128,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[pdfName]" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="{x:Null}" PreserveFormatting="{x:Null}" Range="All" Text="[ExtractedText]">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[pdfName]" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[ExtractedText]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadPDFText>
-    <ui:WriteTextFile ContinueOnError="{x:Null}" DisplayName="Write Text File" Encoding="{x:Null}" File="{x:Null}" FileName="[TextFilePathIn]" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[ExtractedText]">
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[TextFilePathIn]" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[ExtractedText]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -180,13 +180,13 @@
     </ui:Matches>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,197" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,196" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,86" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[cvName(0)]">
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[cvName(0)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -205,13 +205,13 @@
     </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,197" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,196" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,86" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[cvPhone(0)]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[cvPhone(0)]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
@@ -223,13 +223,13 @@
     </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,197" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,196" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,86" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[cvEmail(0)]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[cvEmail(0)]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
@@ -241,13 +241,13 @@
     </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="574,53" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,202" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,201" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,91" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[cvEmail(0).value().toString]" />
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[cvEmail(0).value().toString]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
@@ -289,7 +289,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:AddDataRow ArrayRow="[{cvName(0).ToString, cvPhone(0).ToString, cvEmail(0).ToString, cvEducation(0).ToString}]" DataRow="{x:Null}" DataTable="[dt]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,189" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{cvName(0).ToString, cvPhone(0).ToString, cvEmail(0).ToString, cvEducation(0).ToString}]" DataTable="[dt]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,189" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
@@ -301,7 +301,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteRange AddHeaders="False" DataTable="[dt]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="338,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" Password="{x:Null}" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[(Path.Combine(Directory.GetCurrentDirectory(), &quot;ExcelDataTables&quot;,&quot;Applicants.xlsx&quot;)).ToString]" />
+          <ui:WriteRange AddHeaders="False" DataTable="[dt]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="338,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[(Path.Combine(Directory.GetCurrentDirectory(), &quot;ExcelDataTables&quot;,&quot;Applicants.xlsx&quot;)).ToString]" />
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
@@ -313,7 +313,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="434,309" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Password="{x:Null}" Workbook="{x:Null}" WorkbookPath="[(Path.Combine(Directory.GetCurrentDirectory(), &quot;ExcelDataTables&quot;,&quot;Applicants.xlsx&quot;)).ToString]">
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,309" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[(Path.Combine(Directory.GetCurrentDirectory(), &quot;ExcelDataTables&quot;,&quot;Applicants.xlsx&quot;)).ToString]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
