@@ -1,6 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SendEmailsToFinalApplicants" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="847.2,808.8" sap2010:WorkflowViewState.IdRef="SendEmailsToFinalApplicants_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmailsToFinalApplicants" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="email" Type="InOutArgument(x:String)" />
+    <x:Property Name="password" Type="InOutArgument(x:String)" />
+    <x:Property Name="configFilePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>847.2,2863.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendEmailsToFinalApplicants_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="58">
+    <scg:List x:TypeArguments="x:String" Capacity="76">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -37,10 +47,13 @@
       <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
       <x:String>UiPath.Mail.Activities.Business</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="88">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -93,9 +106,10 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendEmailsToFinalApplicants" sap:VirtualizedContainerService.HintSize="592,744" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendEmailsToFinalApplicants" sap:VirtualizedContainerService.HintSize="784,2798.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="randomPhotoNumber" />
       <Variable x:TypeArguments="sd:DataTable" Name="dataTable" />
@@ -106,7 +120,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,281.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="FinalApplicants.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="721.6,281.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="FinalApplicants.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -123,29 +137,372 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="529.6,310.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadEmailAndPassword.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="721.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DownloadCVs\ReadEmailAndPasswordFromFile\ReadEmailAndPassword.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="password">[password]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="emailAddress">[email]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="configFilePath">[configFilePath]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser (Go to Gmail)" sap:VirtualizedContainerService.HintSize="721.6,2211.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="https://www.google.com/gmail/about/">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,2108.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="romanianLanguageBoolean" />
+              <Variable x:TypeArguments="x:Boolean" Name="profilePictureBoolean" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int32">[randomPhotoNumber]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[new Random().Next(1,5)]</InArgument>
-              </Assign.Value>
-            </Assign>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="625.6,24.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Sign In To Email" sap:VirtualizedContainerService.HintSize="625.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DownloadCVs\SignInToEmail\SignInToEmail.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InOutArgument x:TypeArguments="x:String" x:Key="emailAddress">[email]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="password">[password]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="625.6,1412.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,1296.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="ok" />
+                      <Variable x:TypeArguments="x:String" Name="mailToSend" />
+                      <Variable x:TypeArguments="x:String" Name="nameToSend" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="529.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[randomPhotoNumber]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[new Random().Next(1,5)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="529.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[mailToSend]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[CurrentRow(1).ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="529.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[nameToSend]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[CurrentRow(0).ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="cvs.for.hr.department@gmail.com" DisplayName="Use Gmail" EmailAddress="cvs.for.hr.department@gmail.com" sap:VirtualizedContainerService.HintSize="529.6,664.8" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_1" Timeout="90" UseConnectionService="False">
+                      <umab:GmailApplicationCard.Body>
+                        <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,481.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[&quot;Dear &quot; + nameToSend + &quot;, we inform you that your CV has been validated and accepted. In due time you will be receiving a test. Good luck.&quot;]" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="433.6,369.6" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="Information about CV" To="[mailToSend]" UseDocumentAsBody="False">
+                              <umab:SendMailX.Files>
+                                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                              </umab:SendMailX.Files>
+                              <umab:SendMailX.HtmlBodyFromFile>
+                                <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+                                  <umabh:HtmlContentArgument.RuntimeImages>
+                                    <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                  </umabh:HtmlContentArgument.RuntimeImages>
+                                  <umabh:HtmlContentArgument.ValueMappings>
+                                    <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                                      <umabh:HtmlTextValueMapping Name="Name" Value="[nameToSend]" />
+                                    </scg:List>
+                                  </umabh:HtmlContentArgument.ValueMappings>
+                                </umabh:HtmlContentArgument>
+                              </umab:SendMailX.HtmlBodyFromFile>
+                            </umab:SendMailX>
+                          </Sequence>
+                        </ActivityAction>
+                      </umab:GmailApplicationCard.Body>
+                      <umab:GmailApplicationCard.ClientId>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </umab:GmailApplicationCard.ClientId>
+                      <umab:GmailApplicationCard.ClientSecret>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </umab:GmailApplicationCard.ClientSecret>
+                    </umab:GmailApplicationCard>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="529.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="787.2,1410.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="724.8,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4c56c4c8-75d8-4602-9026-5ed22786edbf" InformativeScreenshot="05b094440562d2f8545969ff709ae24a" Selector="&lt;html app='chrome.exe' title='Mesaje primite (6) - cvs.for.hr.department@gmail.com - Gmail' /&gt;&lt;webctrl aaname='Scrie' aria-role='button' tag='DIV' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'IMG  :a4'" sap:VirtualizedContainerService.HintSize="724.8,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="758ca86c-0a6c-4091-8dd9-9248311f3d1b" InformativeScreenshot="2b6ac1cd044ee16626bfffc33200b69c" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl id=':a4' tableRow='1' tag='IMG' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="724.8,228" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+                            <ui:AnchorBase.Action>
+                              <ActivityAction x:TypeArguments="ui:Anchor">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                </ActivityAction.Argument>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  :j7'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[mailToSend]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ff6be5cb-bf6d-46ca-8190-03062d3eb0af" InformativeScreenshot="436eb046e3d97af7dbbdb5789a793c43" Selector="&lt;webctrl tag='INPUT' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                              </ActivityAction>
+                            </ui:AnchorBase.Action>
+                            <ui:AnchorBase.AnchorProvider>
+                              <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'SPAN  :bg'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                                <ui:WaitUiElementAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7e7c4bc1-dae9-4698-830d-969246ac1456" InformativeScreenshot="9d74656253af8edafc7e6fb1f38ede04" Selector="&lt;webctrl parentid=':dr' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':bg' tableRow='1' tag='SPAN' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:WaitUiElementAppear.Target>
+                              </ui:WaitUiElementAppear>
+                            </ui:AnchorBase.AnchorProvider>
+                          </ui:AnchorBase>
+                          <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="724.8,228" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+                            <ui:AnchorBase.Action>
+                              <ActivityAction x:TypeArguments="ui:Anchor">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                </ActivityAction.Argument>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  :bn'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="Informare CV">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66757ab1-f449-441d-9d57-464e5e5f7c39" InformativeScreenshot="a8ad61e8c6d7c59f17f83fd5e48c78c6" Selector="&lt;webctrl id=':cg' tag='TABLE' /&gt;&lt;webctrl id=':bm' tableRow='1' tag='INPUT' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                              </ActivityAction>
+                            </ui:AnchorBase.Action>
+                            <ui:AnchorBase.AnchorProvider>
+                              <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'DIV  :bl'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                                <ui:WaitUiElementAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0e5745f3-d8e6-4dd7-9af5-28be90ce3871" InformativeScreenshot="a22681ff3587c02fe75051c2a19c2179" Selector="&lt;webctrl id=':cg' tag='TABLE' /&gt;&lt;webctrl id=':bl' tableRow='1' tag='DIV' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:WaitUiElementAppear.Target>
+                              </ui:WaitUiElementAppear>
+                            </ui:AnchorBase.AnchorProvider>
+                          </ui:AnchorBase>
+                          <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="724.8,228" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
+                            <ui:AnchorBase.Action>
+                              <ActivityAction x:TypeArguments="ui:Anchor">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                </ActivityAction.Argument>
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'DIV  :ag'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[&quot;Dear &quot; + nameToSend + &quot;, we inform you that your CV has been validated and accepted. In due time you will be receiving a test. Good luck.&quot;]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="491c0f03-5812-4753-b3dd-36fbe9645d27" InformativeScreenshot="68850bb4bddb610b4a34e29f2b30a0ed" Selector="&lt;html app='chrome.exe' title='Mesaje primite (6) - cvs.for.hr.department@gmail.com - Gmail' /&gt;&lt;webctrl id='undefined' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':ag' tableRow='1' tag='DIV' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                              </ActivityAction>
+                            </ui:AnchorBase.Action>
+                            <ui:AnchorBase.AnchorProvider>
+                              <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'DIV  :bl'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+                                <ui:WaitUiElementAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6eaed9f2-f2cd-4ce6-bbef-12795ddba1f9" InformativeScreenshot="1c7ad8ec8217cd7c5141dbf9366b1871" Selector="&lt;webctrl parentid=':ba' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':el' tableRow='4' tag='DIV' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:WaitUiElementAppear.Target>
+                              </ui:WaitUiElementAppear>
+                            </ui:AnchorBase.AnchorProvider>
+                          </ui:AnchorBase>
+                          <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="724.8,200" sap2010:WorkflowViewState.IdRef="AnchorBase_4">
+                            <ui:AnchorBase.Action>
+                              <ActivityAction x:TypeArguments="ui:Anchor">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                                </ActivityAction.Argument>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV  :bx'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8a1016ef-3860-40ea-8ce3-6c2e88127b4a" InformativeScreenshot="48b4b9def0ce10f27ff2ef2c57edc72c" Selector="&lt;webctrl id=':by' tableRow='4' tag='TABLE' /&gt;&lt;webctrl id=':bw' tableRow='1' tag='DIV' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                              </ActivityAction>
+                            </ui:AnchorBase.Action>
+                            <ui:AnchorBase.AnchorProvider>
+                              <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'DIV  :el'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_4">
+                                <ui:WaitUiElementAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="19932a36-ae7c-4206-b9cb-a03e0aaa9c4d" InformativeScreenshot="1c7ad8ec8217cd7c5141dbf9366b1871" Selector="&lt;webctrl parentid=':ba' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':el' tableRow='4' tag='DIV' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:WaitUiElementAppear.Target>
+                              </ui:WaitUiElementAppear>
+                            </ui:AnchorBase.AnchorProvider>
+                          </ui:AnchorBase>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:RefreshBrowser Browser="{x:Null}" DisplayName="Refresh Browser" sap:VirtualizedContainerService.HintSize="529.6,24.8" sap2010:WorkflowViewState.IdRef="RefreshBrowser_1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="625.6,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a2607f3d-6900-4345-bef4-5373afedf342" InformativeScreenshot="5d3aff744762eb4a590bcd107768b023" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='7' isleaf='1' tag='DIV' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Sign Out From Email" sap:VirtualizedContainerService.HintSize="625.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DownloadCVs\SignOutFromEmail\SignOutFromEmail.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InOutArgument x:TypeArguments="x:String" x:Key="emailAddress">[email]</InOutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="625.6,24.8" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
           </Sequence>
         </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
+      </ui:OpenBrowser.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:OpenBrowser>
   </Sequence>
 </Activity>
